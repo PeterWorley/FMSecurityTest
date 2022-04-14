@@ -5,35 +5,35 @@ This is a proof-of-concept application to test limiting "client" record visibili
 
 It uses two additional tables: "user" and "userClient", a "UserClientIDs" value list, and a "RestrictedAccess" privilege set with custom record access. 
 
-##Tables
+## Tables
 
-###"user" table
+### "user" table
 The "user" table contains a record for each restricted user, storing the name of the FileMaker Account.
 
 - pkUserID: unique ID
 - UserAccount: stores the name of the corresponding FileMaker Account
 
-###"userClient" table
+### "userClient" table
 The "userClient" table is a join table for creating a many-to-many relationship between "user" and "client" tables, for filtering user-client access.
 
 - pkUserClientID: unique ID
 - fkUserID: corresponds to "pkUserID" in the "user" table
 - fkClientID: corresponds to "pkClientID in the "client" table
 
-###"client" table
+### "client" table
 The "client" table contains client information.
 
 - pkClientID: unique ID
 - ClientName: the client name (representing real information about the client that users need to access)
 
-##Value List
+## Value List
 
-###"UserClientIDs" value list
+### "UserClientIDs" value list
 From "userClient::fkClientID"
 
-##Privilege Set
+## Privilege Set
 
-###"RestrictedAccess" privilege set
+### "RestrictedAccess" privilege set
 Has the following record privileges:
 
 - user: limited view access: UserAccount=Get(AccountName)
